@@ -22,7 +22,7 @@ const db = mongoose.connection
 
 // Event handlers for database connection
 db.on('connected', () => {
-  console.log(`Connected to the database: ${dbURI}`);
+  console.log("Connected to the database");
 });
 
 db.on('error', (err) => {
