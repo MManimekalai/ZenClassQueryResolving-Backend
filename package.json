@@ -1,0 +1,42 @@
+{
+  "name": "capstone-backend",
+  "version": "1.0.0",
+  "description": "This is regarding Zen Class query resolving system",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MManimekalai/ZenClassQueryResolving-Backend.git"
+  },
+  "author": "Manimekalai Murugesan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MManimekalai/ZenClassQueryResolving-Backend/issues"
+  },
+  "homepage": "https://github.com/MManimekalai/ZenClassQueryResolving-Backend#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "debug": "^4.3.4",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "http-errors": "^2.0.0",
+    "jade": "^1.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.1.0",
+    "mongoose": "^5.13.0",
+    "mongoose-auto-increment": "^5.0.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.6",
+    "nodemon": "^3.0.1",
+    "retry": "^0.13.1"
+  }
+}
