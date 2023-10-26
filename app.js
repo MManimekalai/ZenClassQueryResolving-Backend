@@ -9,7 +9,7 @@ const autoIncrement = require('mongoose-auto-increment');
 const cors = require('cors');
 
 require('dotenv').config();
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors());
 
 
 

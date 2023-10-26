@@ -28,10 +28,12 @@ const generateToken = (user) => {
     user, // Include the user object in the payload
   };
 
+ 
+
   // Generate the token with user data and the secret key
   const token = jwt.sign(payload, secretKey, { expiresIn: '1h' }); // Adjust the expiration as needed
-
   return token;
+ 
 };
 
 
