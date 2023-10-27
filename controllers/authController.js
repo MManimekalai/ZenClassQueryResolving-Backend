@@ -76,9 +76,10 @@ exports.login = async (req, res) => {
     // Create and send a token for authentication (JWT or any other method)
     const token = authenticationUtils.generateToken(user);
     const role = user.role;
-    const userName = user.userName   
+    const userName = user.userName  
+    const uID = user._id 
 
-    res.status(200).json({ message: 'Login successful', token, userName,  role});
+    res.status(200).json({ message: 'Login successful', token, userName, role, uID});
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Login failed', error: error.message });
