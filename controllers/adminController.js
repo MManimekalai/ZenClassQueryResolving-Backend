@@ -53,10 +53,11 @@ exports.getDashboard = async (req, res) => {
 exports.viewTickets = async (req, res) => {
   try {
     await connectDB();
+    const ticketNumber = req.params.ticketNumber;
 
     // Fetch all tickets from the database
-    const tickets = await Ticket.find();
-    res.status(200).json({ message: 'Tickets fetched successfully', tickets });
+    const tickets = await Ticket.findOne({ ticketNumber: ticketNumber })
+    res.status(200).json({ message: 'Ticket fetched successfully', tickets });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error fetching tickets', error: error.message });
