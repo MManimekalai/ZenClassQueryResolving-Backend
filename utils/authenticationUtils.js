@@ -5,7 +5,7 @@ require('dotenv').config();
 
 // Function to check if a user is authenticated
 const isAuthenticated = (req) => {
-  console.log(req.user)
+  console.log(req.user.role)
     // Implement your authentication logic here
     // For example, you might check for a valid session or token
     return req.user !== undefined; // Replace with your actual check

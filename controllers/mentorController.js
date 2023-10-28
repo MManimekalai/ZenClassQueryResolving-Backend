@@ -74,7 +74,7 @@ exports.resolveTicket = async (req, res) => {
     // Find the ticket by its ID
     const ticket = await Ticket.findOne(
       { ticketNumber: ticketNumber })
-
+      console.log(ticket)
     if (!ticket) {
       return res.status(404).json({ message: 'Ticket not found' });
     }
