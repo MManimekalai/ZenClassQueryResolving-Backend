@@ -173,3 +173,20 @@ exports.viewTicket = async (req, res) => {
     res.status(500).json({ message: 'Error fetching ticket details', error: error.message });
   }
 };
+
+exports.viewAssignedTickets = async (req, res) => {
+  try {
+    await connectDB();
+
+    // Fetch all tickets assigned to the mentor
+    const mentorName = req.user.userName; // Assuming you store the mentor's username in the user object
+
+    const tickets = await Ticket.find({ assignedTo: mentorName });
+
+    // You can process and return the list of tickets assigned to the mentor
+    res.status(200).json({ message: 'Mentor tickets fetched successfully', tickets });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error fetching mentor tickets', error: error.message });
+  }
+};
