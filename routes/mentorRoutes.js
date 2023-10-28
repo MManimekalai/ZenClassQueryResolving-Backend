@@ -9,7 +9,7 @@ router.use(authenticationMiddleware); // Apply authentication middleware to all 
 
 router.get('/dashboard', authorizationMiddleware('mentor'), mentorController.getDashboard);
 router.get('/view-tickets', authorizationMiddleware('mentor'), mentorController.viewTickets);
-router.put('/resolve-ticket/:ticketNumber', authorizationMiddleware('mentor'), mentorController.resolveTicket);
+router.put('/resolve-ticket/:ticketNumber', mentorController.resolveTicket);
 router.post('/take-and-resolve-ticket/:ticketNumber', mentorController.takeAndResolveTicket);
 router.get('/view-ticket/:ticketNumber', authorizationMiddleware('mentor'), mentorController.viewTicket);
 router.get('/assigned-tickets', authorizationMiddleware('mentor'), mentorController.viewAssignedTickets);
