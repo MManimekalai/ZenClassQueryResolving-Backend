@@ -68,8 +68,8 @@ exports.viewTickets = async (req, res) => {
 exports.resolveTicket = async (req, res) => {
   try {
     await connectDB();
-    const  ticketNumber  = req.params;
-    const  solution  = req.body;
+    const  ticketNumber  = req.params.ticketNumber;
+    const  solution  = req.body.solution;
 
     // Find the ticket by its ID
     const ticket = await Ticket.findOne(
