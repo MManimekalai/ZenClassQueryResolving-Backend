@@ -15,7 +15,7 @@ const isAuthenticated = (req) => {
   const hasRole = (req, role) => {
     // Implement your role verification logic here
     // Check if the user's role matches the required role
-    return req.user && req.user.role === role;
+    return req.user.role === role;
   };
 
   async function comparePasswords(plainTextPassword, hashedPassword) {
