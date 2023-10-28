@@ -12,6 +12,7 @@ router.get('/view-tickets', authorizationMiddleware('mentor'), mentorController.
 router.put('/resolve-ticket/:ticketNumber', authorizationMiddleware('mentor'), mentorController.resolveTicket);
 router.post('/take-and-resolve-ticket/:ticketNumber', mentorController.takeAndResolveTicket);
 router.get('/view-ticket/:ticketNumber', authorizationMiddleware('mentor'), mentorController.viewTicket);
+router.get('/assigned-tickets', authorizationMiddleware('mentor'), mentorController.viewAssignedTickets);
 
 
 module.exports = router;
