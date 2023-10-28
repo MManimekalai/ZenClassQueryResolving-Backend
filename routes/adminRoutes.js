@@ -8,7 +8,8 @@ const authorizationMiddleware = require('../middleware/authorizationMiddleware')
 router.use(authenticationMiddleware); // Apply authentication middleware to all routes below
 
 router.get('/dashboard', authorizationMiddleware('admin'), adminController.getDashboard);
-router.get('/view-tickets/:ticketNumber', authorizationMiddleware('admin'), adminController.viewTickets);
+router.get('/view-tickets', authorizationMiddleware('admin'), adminController.viewTickets);
+router.get('/view-tickets/:ticketNumber', authorizationMiddleware('admin'), adminController.viewTicketsbyNumber);
 router.post('/create-user',authorizationMiddleware('admin'), adminController.createUser);
 router.post('/assign-ticket/:ticketNumber', authorizationMiddleware('admin'), adminController.assignTicket);
 router.get('/view-user', authorizationMiddleware('admin'), adminController.viewUser);
