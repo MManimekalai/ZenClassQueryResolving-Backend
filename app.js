@@ -11,7 +11,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 app.use(cors({
-  origin: 'http://localhost:3000', // Allow requests from your local frontend
+  origin: 'https://zenclass-queryresolving-system.netlify.app', // Allow requests from your local frontend
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: 'Content-Type,Authorization',
 }));
