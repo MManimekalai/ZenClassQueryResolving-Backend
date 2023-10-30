@@ -51,13 +51,13 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   const { userName, password } = req.body;
-  //console.log(process.env.MONGODB_URI)
+
 
   try {
     await connectDB();
     // Find the user by userName  
 
-    //console.log('Searching for user with userName:', userName);
+   
     const user = await User.findOne({ userName: req.body.userName }); // Replace 'admin1' with the actual userName you are searching for
     if (!user) {
       return res.status(401).json({ message: 'User not found' });
@@ -66,7 +66,7 @@ exports.login = async (req, res) => {
     // Verify the password
     const isPasswordValid = await authenticationUtils.comparePasswords(password, user.password);
 
-    //console.log("isPasswordValid", isPasswordValid)
+    
 
     if (!isPasswordValid) {
       return res.status(401).json({ message: 'Invalid password' });

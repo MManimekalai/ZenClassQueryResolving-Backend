@@ -14,8 +14,8 @@ module.exports = (role) => {
     if (!hasRole(req, role)) {
       console.log('User role does not match expected role');
       return res.status(403).json({ message: 'Forbidden' });
-    }
-
+      }
+    
     // If the user is authenticated and has the required role, proceed to the next middleware or route handler
     next();
   };

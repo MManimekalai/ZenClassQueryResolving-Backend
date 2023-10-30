@@ -17,6 +17,7 @@ exports.getDashboard = async (req, res) => {
     // Extract the necessary fields for the mentor's dashboard table
     const tableData = tickets.map((ticket) => {
       return {
+        TicketNumber: ticket.ticketNumber,
         Category: ticket.category,
         Subcategory: ticket.subcategory,
         Tags: ticket.tags.join(', '),
@@ -71,16 +72,18 @@ exports.resolveTicket = async (req, res) => {
     const  ticketNumber  = req.params.ticketNumber;
     const  solution  = req.body.solution;
 
+ 
+
     // Find the ticket by its ID
     const ticket = await Ticket.findOne(
       { ticketNumber: ticketNumber })
-      console.log(ticket)
+      // console.log(ticket)
     if (!ticket) {
       return res.status(404).json({ message: 'Ticket not found' });
     }
 
     // Ensure that only assigned tickets can be resolved by the assigned mentor
-    if (ticket.assignedTo !== req.user.userName) {
+    if (ticket.assignedTo !== req.user.userName && '') {
       return res.status(403).json({ message: 'You are not authorized to resolve this ticket' });
     }
 
@@ -95,8 +98,13 @@ exports.resolveTicket = async (req, res) => {
     }
 
     // Update the ticket to mark it as resolved and set the solution
+    ticket.isAssigned = true;
     ticket.isResolved = true;
+    ticket.status = "closed";
     ticket.solution = solution;
+    ticket.assignedTo = req.user.userName;
+    ticket.closedAt= new Date()
+    
 
     // Save the updated ticket
     await ticket.save();
@@ -126,20 +134,24 @@ function validateSolution(solution) {
 
 // Take and resolve a ticket
 exports.takeAndResolveTicket = async (req, res) => {
-  
   try {
     await connectDB();
-
     const  ticketNumber  = req.params.ticketNumber;
     const  solution  = req.body.solution;
+
+    // console.log(ticketNumber);
+    // console.log(solution);
 
     // Update the ticket to mark it as resolved and set the solution
     const ticket = await Ticket.findOneAndUpdate(
       { ticketNumber: ticketNumber },
       {
+        isAssigned: true,
         isResolved: true,
-        solution,
         status: "closed",
+        solution: solution,
+        assignedTo: req.user.userName,
+        closedAt: new Date()
         },
       { new: true }
     );
